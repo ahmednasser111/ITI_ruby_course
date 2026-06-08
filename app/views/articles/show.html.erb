@@ -1,0 +1,22 @@
+<h1><%= @article.title %></h1>
+
+<p>
+  <%= @article.body %>
+</p>
+
+<% if @article.image.attached? %>
+  <%= image_tag @article.image,
+        width: 300 %>
+<% end %>
+
+<% if authenticated? &&
+      @article.user == Current.user %>
+
+  <%= link_to "Edit",
+      edit_article_path(@article) %>
+
+  <%= button_to "Delete",
+      @article,
+      method: :delete %>
+
+<% end %>

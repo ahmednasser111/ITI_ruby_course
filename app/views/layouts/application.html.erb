@@ -25,10 +25,13 @@
 
   <body>
     <nav>
-      <%= link_to "Home", root_path %>
-      <%= button_to "Log out",
-                    session_path,
-                    method: :delete if authenticated? %>
+      <%= link_to "Articles", articles_path %>
+      <% if authenticated? %>
+        <%= button_to "Log out", session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_session_path %>
+        <%= link_to "Sign Up", sign_up_path %>
+      <% end %>
     </nav>
 
     <main>
